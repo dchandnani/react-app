@@ -12,6 +12,13 @@ require('./server/database/db-conn');
 1. Create Cosmosdb Mongo in Azure 
 2. Update .env with the connection details
 3. Create App service in Azure and add the cosmosdb connection details from .env file to App settings of the App service in Azure
+4. Setup Deployment from git under deployment options of the app service
+5. That's it! Now as commits happen to master in github, it should deploy to website automatically.
+
+## To check if the client build is working as expected, do the following:
+1. In Azure, for the app service, choose Advanced Tools, and choose Kudu and hit Go
+2. Click on Files, and you should be able to navigate to : https://reactwebdemo.scm.azurewebsites.net/api/vfs/site/wwwroot/client/
+3. Here you should see build folder if the build happened succesfully
 
 # Creating react-app
 
