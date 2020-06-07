@@ -15,6 +15,11 @@ require('./server/database/db-conn');
 4. Setup Deployment from git under deployment options of the app service
 5. That's it! Now as commits happen to master in github, it should deploy to website automatically.
 
+Note: Step 5 is not working. So have to build the app locally by running from folder client: npm run build, and then uploading build folder to github. 
+
+# Issue
+In StudentList.js and other files (under /client/src/components/Students) the URL for get/post is http://localhost:4000. This seems incorrect and should be https://reactwebdemo.azurewebsites.net though still needs investigation
+
 ## To check if the client build is working as expected, do the following:
 1. In Azure, for the app service, choose Advanced Tools, and choose Kudu and hit Go
 2. Click on Files, and you should be able to navigate to : https://reactwebdemo.scm.azurewebsites.net/api/vfs/site/wwwroot/client/

@@ -2,8 +2,8 @@ require('dotenv').config()
 let express = require('express');
 let cors = require('cors');
 let bodyParser = require('body-parser');
-require('./server/database/db-conn');
-//require('./server/database/db-conn-azure');
+//require('./server/database/db-conn');
+require('./server/database/db-conn-azure');
 
 // ****Initialize app**********
 const app = express();
