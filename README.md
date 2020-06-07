@@ -63,9 +63,6 @@ Note: Step 3 should ideally not be required as the client should be built in Azu
 2. Click on Files, and you should be able to navigate to : https://reactwebdemo.scm.azurewebsites.net/api/vfs/site/wwwroot/client/
 3. Here you should see build folder if the build happened succesfully
 
-# Issue
-In StudentList.js and other files (under /client/src/components/Students) the URL for get/post is http://localhost:4000. This seems incorrect and should be https://reactwebdemo.azurewebsites.net though still needs investigation
-
 # Creating react-app
 
 ## Install node, yarn, mongodb
@@ -81,7 +78,7 @@ In StudentList.js and other files (under /client/src/components/Students) the UR
 - Add .gitignore file to react-app folder
 - run: git add --all
 - run: git commit -m "Initial commit to set up app"
-- run: git remote add origin https://github.com/dchandnani/react-app.git
+- run: git remote add origin https://github.com/dchandnani/<repo-name>.git
 - run: git push -u origin master
 
 Note: if you have created the repo on github with Readme.md file, then you will first need to pull it locally before commit, else remote push will fail. You can still resolve this, by running following command before push: git pull origin master --allow-unrelated-histories
@@ -132,4 +129,5 @@ app.get('/*', (req, res) => {
   },
 
 
-
+## To run app locally
+See the steps outlined above
