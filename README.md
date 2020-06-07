@@ -50,6 +50,7 @@ After you have made all the local changes and tested it, you are ready for deplo
 3. From client folder, run: npm run build
 4. Then from root folder, run:
 - git add --all (do this if you have added any new files)
+- git add -f client/build (need to do this since gitignore excludes build directory)
 - git commit -am "<message>"
 - git push origin master
 
