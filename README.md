@@ -1,29 +1,69 @@
-# To Run the app locally:
+# To run the app locally
+## Start DB
+If you want to use Cosmos-db, make sure server.js is using require('./server/database/db-conn-azure');
 
-1. From client folder, run: yarn run build
+If you want to use local mongodb, do following:
+1. Make sure server.js is using require('./server/database/db-conn');
 2. From any folder, run: mongod --dbpath <path to /server/database/db>
-3. From react-app folder, run: yarn run nodemon server
 
-Note: In server.js, use db-conn to use local mongodb, and use db-conn-azure to use cosmosdb in Azure
-require('./server/database/db-conn');
-//require('./server/database/db-conn-azure');
+## Start server
+1. Make sure url in  ./client/src/server-conn.js is set to http://localhost:4000 
+2. From react-app (i.e. root) folder, run: yarn run nodemon server
+
+## Set up client
+From client folder, run: yarn run build
+
+Now, navigate to localhost:4000 (this is where server is running). That's it! 
+
+Note: each time you make a change in the client you will need to build the client. To avoid this, see the next section.
+
+# To run the app locally and avoid having to rebuild client each time manually
+
+When you are creating the app locally, you will be making client and server changes. In order to avoid having to build the client package each time you make a client change, following trick will work well:
+
+## Start DB
+Same as above
+
+## Start server
+Same as above
+
+## Set up client
+From client directory, run: yarn start
+
+Now, navigate to localhost:3000 (this is where the client react server is running)
+That's it! Now any changes you make to the client or server will show without requiring you to build client each time
+
 
 # Deploying the app
+
+## Setting up resources in Azure
 1. Create Cosmosdb Mongo in Azure 
 2. Update .env with the connection details
 3. Create App service in Azure and add the cosmosdb connection details from .env file to App settings of the App service in Azure
 4. Setup Deployment from git under deployment options of the app service
-5. That's it! Now as commits happen to master in github, it should deploy to website automatically.
 
-Note: Step 5 is not working. So have to build the app locally by running from folder client: npm run build, and then uploading build folder to github. 
+## Continuous deployment
 
-# Issue
-In StudentList.js and other files (under /client/src/components/Students) the URL for get/post is http://localhost:4000. This seems incorrect and should be https://reactwebdemo.azurewebsites.net though still needs investigation
+After you have made all the local changes and tested it, you are ready for deployment.
+1. Make sure that server.js is using require('./server/database/db-conn-azure');
+2. Make sure server-conn.js in ./client/src folder has url set to ""
+3. From client folder, run: npm run build
+4. Then from root folder, run:
+- git add --all (do this if you have added any new files)
+- git commit -am "<message>"
+- git push origin master
 
-## To check if the client build is working as expected, do the following:
+That's it! Changes should deploy to website automatically. You can check this by navigating to the Deployment Center in Azure for the app service and seeing your commit sync'd.
+
+Note: Step 3 should ideally not be required as the client should be built in Azure. However, building in Azure is failing (needs to be investigated). To work around, we are requiring Step 3 to build locally and then upload the build.
+
+### To check files in Azure, do the following:
 1. In Azure, for the app service, choose Advanced Tools, and choose Kudu and hit Go
 2. Click on Files, and you should be able to navigate to : https://reactwebdemo.scm.azurewebsites.net/api/vfs/site/wwwroot/client/
 3. Here you should see build folder if the build happened succesfully
+
+# Issue
+In StudentList.js and other files (under /client/src/components/Students) the URL for get/post is http://localhost:4000. This seems incorrect and should be https://reactwebdemo.azurewebsites.net though still needs investigation
 
 # Creating react-app
 
@@ -89,12 +129,6 @@ app.get('/*', (req, res) => {
     "dev": "node server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-
-
-## To run the app
-1. From client folder, run: yarn run build
-2. From any folder, run: mongod --dbpath <path to /server/database/db>
-3. From react-app folder, run: yarn run nodemon server
 
 
 

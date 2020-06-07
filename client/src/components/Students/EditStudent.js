@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {withStyles} from '@material-ui/core/styles'
 import {TextField, Button, Container} from '@material-ui/core';
 import axios from 'axios';
+import { url } from '../../server-conn';
 
 const styles = (theme) => ({
     root: {
@@ -38,7 +39,7 @@ class EditStudent extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:4000/students/edit-student/' + this.props.match.params.id)
+    axios.get(url + '/students/edit-student/' + this.props.match.params.id)
       .then(res => {
         this.setState({
           name: res.data.name,
@@ -74,7 +75,7 @@ class EditStudent extends Component {
 
     console.log(studentObject);
 
-    axios.put('http://localhost:4000/students/update-student/' + this.props.match.params.id, studentObject)
+    axios.put(url + '/students/update-student/' + this.props.match.params.id, studentObject)
       .then((res) => {
         console.log(res)
         console.log('Student successfully updated')

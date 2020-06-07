@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import StudentTableRow from './StudentTableRow';
 import { Link } from 'react-router-dom';
 import {withStyles} from '@material-ui/core/styles';
+import { url } from '../../server-conn';
 
 const styles = (theme) => ({
   root: {
@@ -46,7 +47,7 @@ class StudentList extends Component {
   };
 
   componentDidMount() {
-    axios.get('http://localhost:4000/students/')
+    axios.get(url + '/students/')
       .then(res => {
         console.log(res);
         this.setState({

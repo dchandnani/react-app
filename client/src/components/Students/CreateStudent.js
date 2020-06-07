@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {withStyles} from '@material-ui/core/styles'
 import {TextField, Button, Container} from '@material-ui/core';
 import axios from 'axios';
+import { url } from '../../server-conn';
 
 const styles = (theme) => ({
     root: {
@@ -58,7 +59,7 @@ class CreateStudent extends Component {
 
     console.log(studentObject);
 
-    axios.post('http://localhost:4000/students/create-student', studentObject)
+    axios.post(url + '/students/create-student', studentObject)
       .then(res => {
         console.log(res.data)
 
