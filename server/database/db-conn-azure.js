@@ -20,8 +20,6 @@ mongoose.connect(DB_CONN, {
 
 */
 
-const mongoUri = `mongodb://${process.env.DB_USER}:${process.env.DB_PW}@${process.env.DB_USER}.documents.azure.com:10255/mean?ssl=true&sslverifycertificate=false`
-
 mongoose.connect(process.env.DB_CONN , { 
     useNewUrlParser: true 
 })

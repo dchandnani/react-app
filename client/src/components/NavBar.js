@@ -102,6 +102,15 @@ const NavBar = (props) => {
                     >
                         {'Students'}
                     </Link>                
+                    <Link
+                        color="inherit"
+                        variant="h6"
+                        underline="none"
+                        className={classes.rightLink}
+                        href="/login"
+                    >
+                        {'Login'}
+                    </Link>                
                 </div>
             </Toolbar>
         </AppBar>

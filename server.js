@@ -17,6 +17,16 @@ app.use(cors());
 const studentRoute = require('./server/routes/student.route')
 app.use('/students', studentRoute)
 
+app.get('/authKeys', (req, res) => {
+    res.json({
+        GOOGLE_CLIENTID: process.env.GOOGLE_CLIENTID,
+        FACEBOOK_APPID: process.env.FACEBOOK_APPID,
+        TWITTER_KEY: process.env.TWITTER_KEY,
+        TWITTER_SECRET: process.env.TWITTER_SECRET,
+        MICROSOFT_APPID: process.env.MICROSOFT_APPID,
+        INSTAGRAM_CLIENTID: process.env.INSTAGRAM_CLIENTID
+    })
+})
 
 // Configure client app
 app.use(express.static('./client/build/'));

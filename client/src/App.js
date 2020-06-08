@@ -10,6 +10,7 @@ import Tables from './components/Tables';
 import StudentList from './components/Students/StudentList';
 import EditStudent from './components/Students/EditStudent';
 import CreateStudent from './components/Students/CreateStudent';
+import Login from './components/Login';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
 
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/student-list" component={StudentList}/>
           <Route exact path="/edit-student/:id" component={EditStudent}/>
           <Route exact path="/create-student" component={CreateStudent}/>
+          <Route exact path="/login" component={Login}/>
           <Route component={ProductHero}/>
         </Switch>
       </Router>
