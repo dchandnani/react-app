@@ -105,7 +105,7 @@ class Login extends Component {
                         authCallback={this.responseTwitter}
                         consumerKey={this.state.Keys.TWITTER_KEY}
                         consumerSecret={this.state.Keys.TWITTER_SECRET}
-                        callbackUrl="https://reactwebdemo.azurewebsites.net/login"
+                        callbackUrl=""
                         buttonTheme="dark_short"
                     />            
                 </div>

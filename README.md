@@ -1,4 +1,12 @@
 # To run the app locally
+## Install node modules
+If you are downloading the project from git, you will likley not have the node modules installed. To install them, run following from root folder and client folder: yarn install (or you can also run npm install. I prefer yarn install as it seems more reselient to dependencies)
+
+If you are starting from scratch, 
+1. Run this from app directory (these modules are required for server): npm install express body-parser cors mongoose dotenv cookie-parser nodemon
+2. Run this from client directory: 
+yarn add @material-ui/core axios react-fontawesome react-google-login react-facebook-login react-microsoft-login react-twitter-login react-instagram-login
+
 ## Start DB
 If you want to use Cosmos-db, make sure server.js is using require('./server/database/db-conn-azure');
 
@@ -8,12 +16,17 @@ If you want to use local mongodb, do following:
 
 ## Start server
 1. Make sure url in  ./client/src/server-conn.js is set to http://localhost:4000 
-2. From react-app (i.e. root) folder, run: yarn run nodemon server
+2. If nodemon is not installed: yarn global add nodemon
+3. From react-app (i.e. root) folder, run: yarn run nodemon server
 
 ## Set up client
-From client folder, run: yarn run build
+From client folder, run: yarn start
+to build, run: yarn run build
 
-Now, navigate to localhost:4000 (this is where server is running). That's it! 
+Navigate to localhost:3000 --> here you can see the app too. And as you make changes to client and server, both will just work fine! This is good for dev scenario. When you deploy, you should have things workikng from localhost:4000 (so that you only have to run one instance of node).
+
+Navigate to localhost:4000 (this is where server is running). That's it! --> Note, if you make changes to the client, you will need to build it. 
+
 
 Note: each time you make a change in the client you will need to build the client. To avoid this, see the next section.
 
@@ -28,7 +41,13 @@ Same as above
 Same as above
 
 ## Set up client
-From client directory, run: yarn start
+From client directory, run: 
+npm i --save-dev npm-watch
+npm run watch 
+
+In separate command prompt run:
+yarn start
+
 
 Now, navigate to localhost:3000 (this is where the client react server is running)
 That's it! Now any changes you make to the client or server will show without requiring you to build client each time
@@ -100,13 +119,7 @@ Note: put nodemon in devDependencies in package.json after running the above com
 
 ## Set up client
 1. From react-app folder run: npx create-react-app client
-2. From cient folder run: yarn add for following:
-"@material-ui/core"
-"contentful"
-"prop-types"
-"react-router-dom"
-"styled-components"
-axios
+2. From cient folder run: yarn add "@material-ui/core" "contentful" "prop-types" "react-router-dom" "styled-components" axios
 
 
 ## Set up server to return the react app
