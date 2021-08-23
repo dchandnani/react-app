@@ -930,3 +930,30 @@ class Login extends Component {
 export default Login;
 
 ```
+
+## Timer example
+
+```js
+    handleClick = () => {
+      this.timer = setInterval(this.tick, 1000);
+    }
+  
+    tick = () => { 
+      this.setState({time: this.state.time-1})
+      if(this.state.time===0) {
+        clearInterval(this.timer);
+      }
+    }
+```
+
+## Dialog example
+
+```html
+  <Dialog aria-labelledby="simple-dialog-title" open={this.state.open}>
+      <DialogTitle id="simple-dialog-title">Set backup account</DialogTitle>
+      <form onSubmit={this.handleSubmit}>
+          <input name="fname" value={this.state.fname} onChange={this.handleChange}></input>
+          <button type="submit">Submit</button>
+      </form>
+  </Dialog>  
+```
